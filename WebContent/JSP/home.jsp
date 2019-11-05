@@ -8,12 +8,6 @@
 <title>Evaluation - MongoDb</title>
 <%@include file="/JSP/header.jsp"%>
 </head>
-<script type="text/javascript">
-	// Initialisation des modules javascript du framework Materialzee css
-	$(document).ready(function() {
-		$('.modal').modal();
-	});
-</script>
 <body>
 	<form method="post" action="home" id="formHome">
 		<nav>
@@ -99,7 +93,7 @@
 										onclick="$('#button').val('oneElement');$('#nutriId').val('${element.getId()}');$('#formHome').submit();">search</i></a></td>
 								<td><a class="btn-floating waves-effect waves-light orange"><i
 										class="material-icons">edit</i></a></td>
-								<td><a class="btn-floating waves-effect waves-light red" onclick="$('#nameToDelete').remove();$('#nameToDelete').append('${element.getNomProduit()}');"
+								<td><a class="btn-floating waves-effect waves-light red" onclick="$('#nutriId').val('${element.getId()}');$('#nameToDelete').empty();$('#nameToDelete').append('${element.getNomProduit()}');"
 									href="#delete"><i class="material-icons">close</i></a></td>
 							</tr>
 						</c:forEach>
@@ -107,17 +101,6 @@
 				</table>
 			</div>
 		</div>
-		<div id="delete" class="modal">
-			<div class="modal-content">
-				<h4>Suppression</h4>
-				<p>Voulez-vous vraiment supprimer "<span id="nameToDelete"></span>" ?</p>
-			</div>
-			<div class="modal-footer">
-				<a href="#!"
-					class="modal-action modal-close waves-effect waves-red btn-flat">Supprimer</a>
-			</div>
-		</div>
-
 	</form>
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript" src="js/materialize.min.js"></script>

@@ -65,8 +65,12 @@ public class Home extends HttpServlet {
 			session.setAttribute("action", "filter");
 			Navigation.load(request, response, "home");
 			break;
+		case "delete":
+			DaoGlobal.deleteProduct(id);
+			Navigation.to(request, response, "home");
+			break;
 		default:
-			Navigation.load(request, response, "home");
+			Navigation.to(request, response, "home");
 			break;
 		}
 

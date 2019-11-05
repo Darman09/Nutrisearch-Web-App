@@ -85,4 +85,15 @@ public class DaoGlobal {
 		}
 		return listNutri;
 	}
+
+	static public void deleteProduct(String id) throws IOException {
+		URL url = new URL("http://localhost:8095/rest/nutri/delete/?id="+id);
+		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setRequestMethod("GET");
+		conn.setRequestProperty("Accept", "application/json");
+
+		if (conn.getResponseCode() != 200) {
+			throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+		}
+	}
 }

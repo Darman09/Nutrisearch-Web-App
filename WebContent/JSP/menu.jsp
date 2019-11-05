@@ -4,14 +4,12 @@
 <div class="nav-wrapper dark-purple">
 	<ul>
 		<li>
-			<h5 style="margin-top: 17px !important; margin-left: 10px;">
+			<h5 style="margin-top: 17px !important; margin-left: 10px;cursor: pointer;:" onClick="document.getElementById('button').value ='home';$('#formHome').submit();">
+				Open Food Facts
 				</h5>
 		</li>
-		<li>
-			<h5 style="margin-top: 17px !important; margin-left: 10px;" id="droit"></h5>
-		</li>
 	</ul>
-	<ul class="right hide-on-med-and-down">
+	<ul class="right">
 		<li>
 			<%-- Bouton pour rediriger vers le compte de l'utilisateur --%>
 			<button type="submit" class="btn-flat white-text"

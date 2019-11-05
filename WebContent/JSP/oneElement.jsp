@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -14,9 +14,10 @@
 			<%@include file="/JSP/menu.jsp"%>
 		</nav>
 		<div class="row">
-			<div class="col s12">
+			<div class="col s9">
 				<h1>${element.getNomProduit()}</h1>
 			</div>
+			<div class="col s3"></div>
 			<div class="col s6">
 				<h4>
 					<c:choose>
@@ -63,10 +64,27 @@
 				<h4>Pays de vente : ${element.getPaysVente()}</h4>
 			</div>
 			<div class="col s12">
-				<h4>Description: </h4>
+				<h4>Description:</h4>
 				<h4>${element.getIngredientDescription()}</h4>
 			</div>
 		</div>
+
+		<div class="fixed-action-btn toolbar">
+			<a class="btn-floating btn-large dark-purple"> <i
+				class="large material-icons">settings</i>
+			</a>
+			<ul>
+				<li class="waves-effect waves-light tooltipped" data-position="top"
+					data-tooltip="Modifier le produit"><a href="#editElement" onclick="$('#modifyCategorie').val(${element.getCategorie()});"><i
+						class="material-icons">edit</i></a></li>
+
+				<li class="waves-effect waves-light tooltipped" data-position="top"
+					data-tooltip="Supprimer le produit"><a href="#delete"><i
+						class="material-icons">delete</i></a></li>
+			</ul>
+		</div>
+		<%@include file="/JSP/modal/deleteProductAtInfo.jsp"%>
+		<%@include file="/JSP/modal/modifyProductAtInfo.jsp"%>
 	</form>
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript" src="js/materialize.min.js"></script>
