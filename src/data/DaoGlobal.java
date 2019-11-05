@@ -62,9 +62,9 @@ public class DaoGlobal {
 		return json.fromJson(new String(obj.toString().getBytes(),"UTF-8"), Nutri.class);
 	}
 
-	static public LinkedList<Nutri> getAllByNutriscore() throws IOException {
+	static public LinkedList<Nutri> getAllByNutriscore(String nutriscore) throws IOException {
 		LinkedList<Nutri> listNutri = new LinkedList<Nutri>();
-		URL url = new URL("http://localhost:8095/rest/nutri/all");
+		URL url = new URL("http://localhost:8095/rest/nutri/allByScore/?nutriscore="+nutriscore);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Accept", "application/json");

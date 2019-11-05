@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +24,6 @@ public class Home extends HttpServlet {
 	 */
 	public Home() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -34,7 +32,16 @@ public class Home extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setAttribute("listElement", DaoGlobal.getAllNutri());
+		HttpSession session = request.getSession();
+		if (session.getAttribute("action") != null) {
+			if (session.getAttribute("action").equals("filter")) {
+				request.setAttribute("result", session.getAttribute("result"));
+			} else {
+				request.setAttribute("result", DaoGlobal.getAllNutri());
+			}
+		} else {
+			request.setAttribute("result", DaoGlobal.getAllNutri());
+		}
 		Navigation.load(request, response, "home");
 	}
 
@@ -46,15 +53,19 @@ public class Home extends HttpServlet {
 			throws ServletException, IOException {
 		String button = request.getParameter("button");
 		String id = request.getParameter("nutriId");
+		String nutriscore = request.getParameter("grade");
 		HttpSession session = request.getSession();
 		switch (button) {
 		case "oneElement":
 			session.setAttribute("element", DaoGlobal.getOneNutri(id));
 			Navigation.menu(request, response, button, "home");
 			break;
+		case "filter":
+			session.setAttribute("result", DaoGlobal.getAllByNutriscore(nutriscore.toLowerCase()));
+			session.setAttribute("action", "filter");
+			Navigation.load(request, response, "home");
+			break;
 		default:
-			session.setAttribute("action", "search");
-			session.setAttribute("action", "search");
 			Navigation.load(request, response, "home");
 			break;
 		}

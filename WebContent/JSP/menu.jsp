@@ -1,5 +1,6 @@
 <input type="hidden" id="button" name="button" value="none">
 <input type="hidden" value="none" id="nutriId" name="nutriId">
+<input type="hidden" value="none" id="grade" name="grade">
 <div class="nav-wrapper dark-purple">
 	<ul>
 		<li>
