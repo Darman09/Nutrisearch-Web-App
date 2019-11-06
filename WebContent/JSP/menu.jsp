@@ -12,8 +12,8 @@
 	<ul class="right">
 		<li>
 			<%-- Bouton pour rediriger vers le compte de l'utilisateur --%>
-			<button type="submit" class="btn-flat white-text"
-				onClick="document.getElementById('button').value ='home';">Accueil</button>
+			<button type="button" class="btn-flat white-text"
+				onClick="$('#button').val('home');$('#formHome').submit();">Accueil</button>
 		</li>
 	</ul>
 </div>

@@ -53,7 +53,6 @@
 							<th>Nutriscore</th>
 							<th>Quantité</th>
 							<th>Consulter</th>
-							<th>Modifier</th>
 							<th>Supprimer</th>
 						</tr>
 					</thead>
@@ -91,9 +90,8 @@
 									class="tiny btn-floating waves-effect waves-light dark-purple"><i
 										class="tiny material-icons"
 										onclick="$('#button').val('oneElement');$('#nutriId').val('${element.getId()}');$('#formHome').submit();">search</i></a></td>
-								<td><a class="btn-floating waves-effect waves-light orange"><i
-										class="material-icons">edit</i></a></td>
-								<td><a class="btn-floating waves-effect waves-light red" onclick="$('#nutriId').val('${element.getId()}');$('#nameToDelete').empty();$('#nameToDelete').append('${element.getNomProduit()}');"
+								<td><a class="btn-floating waves-effect waves-light red"
+									onclick="$('#nutriId').val('${element.getId()}');$('#nameToDelete').empty();$('#nameToDelete').append('${element.getNomProduit()}');"
 									href="#delete"><i class="material-icons">close</i></a></td>
 							</tr>
 						</c:forEach>

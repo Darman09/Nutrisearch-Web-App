@@ -2,11 +2,19 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Evaluation - MongoDb</title>
 <%@include file="/JSP/header.jsp"%>
+<script type="text/javascript">
+	function modify() {
+		$('#modifyCategorie').val("${element.getCategorie()}");
+		$('#Grade${fn:toUpperCase(element.getNutritionGrade())}').prop('selected', true);
+		$('#nutriId').val(${element.getId()});
+	}
+</script>
 </head>
 <body>
 	<form method="post" action="oneElement" id="formHome">
@@ -75,7 +83,7 @@
 			</a>
 			<ul>
 				<li class="waves-effect waves-light tooltipped" data-position="top"
-					data-tooltip="Modifier le produit"><a href="#editElement" onclick="$('#modifyCategorie').val(${element.getCategorie()});"><i
+					data-tooltip="Modifier le produit"><a href="#editElement" onclick="modify()"><i
 						class="material-icons">edit</i></a></li>
 
 				<li class="waves-effect waves-light tooltipped" data-position="top"
