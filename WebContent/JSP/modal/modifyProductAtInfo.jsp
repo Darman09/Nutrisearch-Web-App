@@ -32,11 +32,11 @@
 				<input id="modifyPaysOrigine" name="modifyPaysOrigine" type="text"
 					value="${element.getPaysOrigine()}"> <label
 					for="modifyPaysOrigine">Pays d'Origine</label>
-			</div>
+			</div>	
 			<div class="col s6 input-field">
 				<input id="modifyPaysVente" name="modifyPaysVente" type="text"
 					value="${element.getPaysVente()}"> <label
-					for="modifyPaysVente">Pays d'Origine</label>
+					for="modifyPaysVente">Pays de Vente</label>
 			</div>
 			<div class="input-field col s12">
 				<textarea id="modifyCategorie" name="modifyCategorie"

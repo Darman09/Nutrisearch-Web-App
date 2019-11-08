@@ -20,7 +20,7 @@
 			<div class="col s12">
 				<h5>Recherche Complexe</h5>
 			</div>
-			<div class="col s6 input-field">
+			<div class="col s3 input-field">
 				<select class="browser-default" id="searchCat" name="grade">
 					<option value="" disabled selected>Choisissez votre grade</option>
 					<option onclick="$('#button').val('filter');$('#grade').val('A');">A</option>
@@ -30,8 +30,16 @@
 					<option onclick="$('#button').val('filter');$('#grade').val('E');">E</option>
 				</select>
 			</div>
-			<div class="col s12 input-field">
-				<a class="waves-effect waves-light btn"
+			<div class="col s3 input-field">
+				<input id="searchPaysOrigine" name="searchPaysOrigine" type="text"> <label
+					for="searchPaysOrigine">Pays d'Origine</label>
+			</div>
+			<div class="col s3 input-field">
+				<input id="searchPaysVente" name="searchPaysVente" type="text"> <label
+					for="searchPaysVente">Pays de Vente</label>
+			</div>
+			<div class="col s3 input-field">
+				<a class="waves-effect waves-light btn  dark-purple "
 					onclick="$('#formHome').submit();"><i
 					class="material-icons right">search</i>Rechercher</a>
 			</div>
@@ -92,13 +100,25 @@
 										onclick="$('#button').val('oneElement');$('#nutriId').val('${element.getId()}');$('#formHome').submit();">search</i></a></td>
 								<td><a class="btn-floating waves-effect waves-light red"
 									onclick="$('#nutriId').val('${element.getId()}');$('#nameToDelete').empty();$('#nameToDelete').append('${element.getNomProduit()}');"
-									href="#delete"><i class="material-icons">close</i></a></td>
+									href="#delete"><i class="material-icons">delete</i></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 		</div>
+
+		<div class="fixed-action-btn toolbar">
+			<a class="btn-floating btn-large dark-purple"> <i
+				class="large material-icons">settings</i>
+			</a>
+			<ul>
+				<li class="waves-effect waves-light tooltipped" data-position="top"
+					data-tooltip="Ajouter un produit"><a href="#addElement"><i class="material-icons">add_circle</i></a></li>
+			</ul>
+		</div>
+		<%@include file="/JSP/modal/deleteProductAtHome.jsp"%>
+		<%@include file="/JSP/modal/addProductAtHome.jsp"%>
 	</form>
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript" src="js/materialize.min.js"></script>

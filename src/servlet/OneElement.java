@@ -45,19 +45,20 @@ public class OneElement extends HttpServlet {
 			throws ServletException, IOException {
 		String button = request.getParameter("button");
 		String id = request.getParameter("nutriId");
-		String nom = request.getParameter("modifyName"+id);
-		String grade = request.getParameter("modifyGrade"+id);
-		String packaging = request.getParameter("modifyPackaging"+id);
-		String paysOrigine = request.getParameter("modifyPaysOrigine"+id);
-		String paysVente = request.getParameter("modifyPaysVente"+id);
-		String categorie = request.getParameter("modifyCategorie"+id);
-		String ingredientDescription = request.getParameter("modifyDescription"+id);
-		String quantity = request.getParameter("modifyQuantity"+id);
+		String nom = request.getParameter("modifyName");
+		String grade = request.getParameter("modifyGrade");
+		String packaging = request.getParameter("modifyPackaging");
+		String paysOrigine = request.getParameter("modifyPaysOrigine");
+		String paysVente = request.getParameter("modifyPaysVente");
+		String categorie = request.getParameter("modifyCategorie");
+		String ingredientDescription = request.getParameter("modifyDescription");
+		String quantity = request.getParameter("modifyQuantity");
 		HttpSession session = request.getSession();
 		switch (button) {
 		case "modify":
 			Nutri n = DaoGlobal.modifyProduct(id, nom, grade, packaging, paysOrigine, paysVente, categorie, ingredientDescription, quantity);
 			session.setAttribute("element", n);
+			session.setAttribute("result", DaoGlobal.getAllNutri());
 			Navigation.menu(request, response, button, "oneElement");
 			break;
 		case "home":

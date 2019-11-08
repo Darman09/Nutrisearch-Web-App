@@ -54,6 +54,8 @@ public class Home extends HttpServlet {
 		String button = request.getParameter("button");
 		String id = request.getParameter("nutriId");
 		String nutriscore = request.getParameter("grade");
+		String searchPaysOrigine = request.getParameter("searchPaysOrigine");
+		String searchPaysVente = request.getParameter("searchPaysVente");
 		HttpSession session = request.getSession();
 		switch (button) {
 		case "oneElement":
@@ -61,12 +63,26 @@ public class Home extends HttpServlet {
 			Navigation.menu(request, response, button, "home");
 			break;
 		case "filter":
-			session.setAttribute("result", DaoGlobal.getAllByNutriscore(nutriscore.toLowerCase()));
+			session.setAttribute("result", DaoGlobal.getAllByNutriscore(nutriscore.toLowerCase(),searchPaysOrigine, searchPaysVente));
 			session.setAttribute("action", "filter");
 			Navigation.load(request, response, "home");
 			break;
 		case "delete":
 			DaoGlobal.deleteProduct(id);
+			session.setAttribute("action", "delete");
+			Navigation.to(request, response, "home");
+			break;
+		case "add":
+			String nom = request.getParameter("addName");
+			String grade = request.getParameter("addGrade");
+			String packaging = request.getParameter("addPackaging");
+			String paysOrigine = request.getParameter("addPaysOrigine");
+			String paysVente = request.getParameter("addPaysVente");
+			String categorie = request.getParameter("addCategorie");
+			String ingredientDescription = request.getParameter("addDescription");
+			String quantity = request.getParameter("addQuantity");
+			DaoGlobal.addProduct(id, nom, grade, packaging, paysOrigine, paysVente, categorie, ingredientDescription, quantity);
+			session.setAttribute("result", DaoGlobal.getAllNutri());
 			Navigation.to(request, response, "home");
 			break;
 		default:
