@@ -62,6 +62,7 @@
 							<th>Quantité</th>
 							<th>Consulter</th>
 							<th>Supprimer</th>
+							<th>Favoris</th>
 						</tr>
 					</thead>
 					<tbody id="bodyTable">
@@ -101,6 +102,9 @@
 								<td><a class="btn-floating waves-effect waves-light red"
 									onclick="$('#nutriId').val('${element.getId()}');$('#nameToDelete').empty();$('#nameToDelete').append('${element.getNomProduit()}');"
 									href="#delete"><i class="material-icons">delete</i></a></td>
+								<td><a class="btn-floating waves-effect waves-light yellow"
+									onclick="$('#nutriId').val('${element.getId()}')"
+									href="#addfavoris"><i class="material-icons">add</i></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import data.DaoGlobal;
+import model.Favoris;
+import model.Nutri;
 import utilities.Navigation;
 
 /**
@@ -83,6 +85,11 @@ public class Home extends HttpServlet {
 			String quantity = request.getParameter("addQuantity");
 			DaoGlobal.addProduct(id, nom, grade, packaging, paysOrigine, paysVente, categorie, ingredientDescription, quantity);
 			session.setAttribute("result", DaoGlobal.getAllNutri());
+			Navigation.to(request, response, "home");
+			break;
+		case "addfavoris":
+			Nutri nutri = DaoGlobal.getOneNutri(id);
+			DaoGlobal.addProductFavoris(nutri.getNomProduit(), nutri.getNutritionGrade(), nutri.getPackaging(), nutri.getPaysOrigine(), nutri.getPaysVente(), nutri.getCategorie(), nutri.getIngredientDescription(), nutri.getQuantity());
 			Navigation.to(request, response, "home");
 			break;
 		default:
