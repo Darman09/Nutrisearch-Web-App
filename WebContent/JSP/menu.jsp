@@ -13,6 +13,11 @@
 		<li>
 			<%-- Bouton pour rediriger vers le compte de l'utilisateur --%>
 			<button type="button" class="btn-flat white-text"
+				onClick="$('#button').val('listfavoris');$('#formHome').submit();">Vos Favoris</button>
+		</li>
+		<li>
+			<%-- Bouton pour rediriger vers le compte de l'utilisateur --%>
+			<button type="button" class="btn-flat white-text"
 				onClick="$('#button').val('home');$('#formHome').submit();">Accueil</button>
 		</li>
 	</ul>
