@@ -68,10 +68,26 @@ public class DaoGlobal {
 	static public LinkedList<Nutri> getAllByNutriscore(String nutriscore, String searchPaysVente,
 			String searchPaysOrigine) throws IOException {
 		LinkedList<Nutri> listNutri = new LinkedList<Nutri>();
+		if (nutriscore != null && nutriscore != "none") {
+
+		} else {
+			nutriscore = "";
+		}
+		if (searchPaysVente != null && !searchPaysVente.isEmpty()) {
+
+		} else {
+			searchPaysVente = "none";
+		}
+		if (searchPaysOrigine != null && !searchPaysOrigine.isEmpty()) {
+
+		} else {
+			searchPaysOrigine = "none";
+		}
 		URL url = new URL(
 				"http://localhost:8095/rest/nutri/allByElement/?nutriscore=" + URLEncoder.encode(nutriscore, "UTF-8")
 						+ "&paysOrigine=" + URLEncoder.encode(searchPaysOrigine, "UTF-8") + "&paysVente="
 						+ URLEncoder.encode(searchPaysVente, "UTF-8"));
+		System.out.println(url.getPath());
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Accept", "application/json");
@@ -93,7 +109,7 @@ public class DaoGlobal {
 		return listNutri;
 	}
 
-	static public LinkedList<Favoris> getavorisByProductId(String id) throws IOException {
+	static public LinkedList<Favoris> getFavorisByProductId(String id) throws IOException {
 		LinkedList<Favoris> listFav = new LinkedList<Favoris>();
 		URL url = new URL("http://localhost:8095/rest/favoris/findByIdProduct/?idproduit=" + id);
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -126,7 +142,7 @@ public class DaoGlobal {
 		if (conn.getResponseCode() != 200) {
 			throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
 		}
-		List<Favoris> listFav =  DaoGlobal.getavorisByProductId(id);
+		List<Favoris> listFav = DaoGlobal.getFavorisByProductId(id);
 		for (Favoris favoris : listFav) {
 			DaoGlobal.deleteFavoris(favoris.getId());
 		}

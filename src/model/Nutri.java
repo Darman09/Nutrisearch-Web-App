@@ -59,19 +59,19 @@ public class Nutri {
     }
 
     public String getPaysOrigine() {
-        return paysVente;
-    }
-
-    public void setPaysOrigine(String paysOrigine) {
-        this.paysVente = paysOrigine;
-    }
-
-    public String getPaysVente() {
         return paysOrigine;
     }
 
+    public void setPaysOrigine(String paysOrigine) {
+        this.paysOrigine = paysOrigine;
+    }
+
+    public String getPaysVente() {
+        return paysVente;
+    }
+
     public void setPaysVente(String paysVente) {
-        this.paysOrigine = paysVente;
+        this.paysVente = paysVente;
     }
 
     public String getCategorie() {

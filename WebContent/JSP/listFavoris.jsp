@@ -14,13 +14,17 @@
 		<nav>
 			<%@include file="/JSP/menu.jsp"%>
 		</nav>
-		<div class="col s12 ">
+		<div class="col s12">
+			<div class="col s12">
+				<h1>Liste des favoris Nutriscore</h1>
+			</div>
+			<div class="col s12 ">
 				<table>
 					<thead>
 						<tr>
 							<th>Nom</th>
 							<th>Nutriscore</th>
-							<th>Quantité</th>							
+							<th>Quantité</th>
 						</tr>
 					</thead>
 					<tbody id="bodyTable">
@@ -58,6 +62,7 @@
 					</tbody>
 				</table>
 			</div>
+		</div>
 	</form>
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript" src="js/materialize.min.js"></script>

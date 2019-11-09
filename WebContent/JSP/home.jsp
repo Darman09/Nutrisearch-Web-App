@@ -23,24 +23,24 @@
 			<div class="col s3 input-field">
 				<select class="browser-default" id="searchCat" name="grade">
 					<option value="" disabled selected>Choisissez votre grade</option>
-					<option onclick="$('#button').val('filter');$('#grade').val('A');">A</option>
-					<option onclick="$('#button').val('filter');$('#grade').val('B');">B</option>
-					<option onclick="$('#button').val('filter');$('#grade').val('C');">C</option>
-					<option onclick="$('#button').val('filter');$('#grade').val('D');">D</option>
-					<option onclick="$('#button').val('filter');$('#grade').val('E');">E</option>
+					<option onclick="$('#grade').val('A');">A</option>
+					<option onclick="$('#grade').val('B');">B</option>
+					<option onclick="$('#grade').val('C');">C</option>
+					<option onclick="$('#grade').val('D');">D</option>
+					<option onclick="$('#grade').val('E');">E</option>
 				</select>
-			</div>
-			<div class="col s3 input-field">
-				<input id="searchPaysOrigine" name="searchPaysOrigine" type="text"> <label
-					for="searchPaysOrigine">Pays d'Origine</label>
 			</div>
 			<div class="col s3 input-field">
 				<input id="searchPaysVente" name="searchPaysVente" type="text"> <label
 					for="searchPaysVente">Pays de Vente</label>
 			</div>
 			<div class="col s3 input-field">
+				<input id="searchPaysOrigine" name="searchPaysOrigine" type="text"> <label
+					for="searchPaysOrigine">Pays d'Origine</label>
+			</div>
+			<div class="col s3 input-field">
 				<a class="waves-effect waves-light btn  dark-purple "
-					onclick="$('#formHome').submit();"><i
+					onclick="$('#button').val('filter');$('#formHome').submit();"><i
 					class="material-icons right">search</i>Rechercher</a>
 			</div>
 			<div class="col s12">
@@ -60,6 +60,8 @@
 							<th>Nom</th>
 							<th>Nutriscore</th>
 							<th>Quantité</th>
+							<th>Vente</th>
+							<th>Origine</th>
 							<th>Consulter</th>
 							<th>Supprimer</th>
 							<th>Favoris</th>
@@ -95,6 +97,8 @@
 										</c:otherwise>
 									</c:choose></td>
 								<td>${element.getQuantity()}</td>
+								<td>${element.getPaysVente()}</td>
+								<td>${element.getPaysOrigine()}</td>
 								<td><a
 									class="tiny btn-floating waves-effect waves-light dark-purple"><i
 										class="tiny material-icons"
