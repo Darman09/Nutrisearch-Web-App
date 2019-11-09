@@ -103,8 +103,8 @@
 									onclick="$('#nutriId').val('${element.getId()}');$('#nameToDelete').empty();$('#nameToDelete').append('${element.getNomProduit()}');"
 									href="#delete"><i class="material-icons">delete</i></a></td>
 								<td><a class="btn-floating waves-effect waves-light yellow"
-									onclick="$('#nutriId').val('${element.getId()}')"
-									href="#addfavoris"><i class="material-icons">add</i></a></td>
+									onclick="$('#button').val('addfavoris');$('#nutriId').val('${element.getId()}');$('#formHome').submit();">
+									<i class="material-icons">star</i></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -162,32 +162,39 @@ public class DaoGlobal {
 		return json.fromJson(new String(obj.toString().getBytes(), "UTF-8"), Nutri.class);
 	}
 	
-	static public Favoris addProductFavoris(String nom, String grade, String packaging, String paysOrigine,
-			String paysVente, String categorie, String ingredientDescription, String quantity) throws IOException {
-		String data = "http://localhost:8095/rest/favoris/add/?&nom=" + URLEncoder.encode(nom, "UTF-8") + "&grade="
-				+ URLEncoder.encode(grade, "UTF-8") + "&packaging=" + URLEncoder.encode(packaging, "UTF-8")
-				+ "&paysOrigine=" + URLEncoder.encode(paysOrigine, "UTF-8") + "&paysVente="
-				+ URLEncoder.encode(paysVente, "UTF-8") + "&categorie=" + URLEncoder.encode(categorie, "UTF-8")
-				+ "&ingredientDescription=" + URLEncoder.encode(ingredientDescription, "UTF-8") + "&quantity="
-				+ URLEncoder.encode(quantity, "UTF-8");
-		URL url = new URL(data);
-		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		conn.setRequestMethod("GET");
-		conn.setRequestProperty("Accept", "application/json");
+	static public Favoris addProductFavoris(String id, String nom, String grade, String packaging, String paysOrigine,
+			String paysVente, String categorie, String ingredientDescription, String quantity) {
+		try {
+			String data = "http://localhost:8095/rest/favoris/add/?id=" + URLEncoder.encode(id, "UTF-8") + "&nom=" + URLEncoder.encode(nom, "UTF-8") + "&grade="
+					+ URLEncoder.encode(grade, "UTF-8") + "&packaging=" + URLEncoder.encode(packaging, "UTF-8")
+					+ "&paysOrigine=" + URLEncoder.encode(paysOrigine, "UTF-8") + "&paysVente="
+					+ URLEncoder.encode(paysVente, "UTF-8") + "&categorie=" + URLEncoder.encode(categorie, "UTF-8")
+					+ "&ingredientDescription=" + URLEncoder.encode(ingredientDescription, "UTF-8") + "&quantity="
+					+ URLEncoder.encode(quantity, "UTF-8");
+			URL url = new URL(data);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Accept", "application/json");
 
-		if (conn.getResponseCode() != 200) {
-			throw new RuntimeException(
-					"Failed : HTTP error code : " + conn.getResponseCode() + " | " + conn.getResponseMessage());
-		}
+			if (conn.getResponseCode() != 200) {
+				throw new RuntimeException(
+						"Failed : HTTP error code : " + conn.getResponseCode() + " | " + conn.getResponseMessage());
+			}
 
-		BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-		String output;
-		JsonObject obj = new JsonObject();
-		Gson json = new Gson();
-		while ((output = br.readLine()) != null) {
-			JsonParser parser = new JsonParser();
-			obj = (JsonObject) parser.parse(output);
+			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+			String output;
+			JsonObject obj = new JsonObject();
+			Gson json = new Gson();
+			while ((output = br.readLine()) != null) {
+				JsonParser parser = new JsonParser();
+				obj = (JsonObject) parser.parse(output);
+			}
+			return json.fromJson(new String(obj.toString().getBytes(), "UTF-8"), Favoris.class);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
 		}
-		return json.fromJson(new String(obj.toString().getBytes(), "UTF-8"), Favoris.class);
+		
 	}
 }

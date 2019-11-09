@@ -89,7 +89,7 @@ public class Home extends HttpServlet {
 			break;
 		case "addfavoris":
 			Nutri nutri = DaoGlobal.getOneNutri(id);
-			DaoGlobal.addProductFavoris(nutri.getNomProduit(), nutri.getNutritionGrade(), nutri.getPackaging(), nutri.getPaysOrigine(), nutri.getPaysVente(), nutri.getCategorie(), nutri.getIngredientDescription(), nutri.getQuantity());
+			DaoGlobal.addProductFavoris(nutri.getId(),nutri.getNomProduit(), nutri.getNutritionGrade(), nutri.getPackaging(), nutri.getPaysOrigine(), nutri.getPaysVente(), nutri.getCategorie(), nutri.getIngredientDescription(), nutri.getQuantity());
 			Navigation.to(request, response, "home");
 			break;
 		default:
