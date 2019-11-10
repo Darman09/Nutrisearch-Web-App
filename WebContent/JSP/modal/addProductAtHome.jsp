@@ -36,12 +36,12 @@
 					for="addPaysVente">Pays de Vente</label>
 			</div>
 			<div class="input-field col s12">
-				<textarea id="addCategorie" name="addCategorie" required class="validate" 
+				<textarea id="addCategorie" name="addCategorie" required
 					class="materialize-textarea"></textarea>
 				<label for="addCategorie">Catégorie du produit</label>
 			</div>
 			<div class="input-field col s12">
-				<textarea id="addDescription" name="addDescription" required class="validate" 
+				<textarea id="addDescription" name="addDescription" required
 					class="materialize-textarea"></textarea>
 				<label for="addDescription">Description du produit</label>
 			</div>
