@@ -87,7 +87,6 @@ public class DaoGlobal {
 				"http://localhost:8095/rest/nutri/allByElement/?nutriscore=" + URLEncoder.encode(nutriscore, "UTF-8")
 						+ "&paysOrigine=" + URLEncoder.encode(searchPaysOrigine, "UTF-8") + "&paysVente="
 						+ URLEncoder.encode(searchPaysVente, "UTF-8"));
-		System.out.println(url.getPath());
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Accept", "application/json");

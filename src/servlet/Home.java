@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -66,6 +68,20 @@ public class Home extends HttpServlet {
 			session.setAttribute("result",
 					DaoGlobal.getAllByNutriscore(nutriscore.toLowerCase(), searchPaysOrigine, searchPaysVente));
 			session.setAttribute("action", "filter");
+			List<String> filters = new LinkedList<String>();
+			if (nutriscore != null && nutriscore != "") {
+				filters.add("Grade : " + nutriscore);
+			}
+			if (searchPaysVente != null && searchPaysVente != "") {
+				filters.add("Pays de vente : " + searchPaysVente);
+			}
+			if (searchPaysOrigine != null && searchPaysOrigine != "") {
+				filters.add("Pays d'origine : " + searchPaysOrigine);
+			}
+			request.setAttribute("filterResult", filters);
+			request.setAttribute("gradeSelected", nutriscore);
+			request.setAttribute("paysOrigineSelected",  searchPaysOrigine);
+			request.setAttribute("paysVenteSelected", searchPaysVente);
 			Navigation.load(request, response, "home");
 			break;
 		case "delete":

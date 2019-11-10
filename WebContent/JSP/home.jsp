@@ -7,6 +7,12 @@
 <meta charset="ISO-8859-1">
 <title>Evaluation - MongoDb</title>
 <%@include file="/JSP/header.jsp"%>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#searchCat').val('${gradeSelected}');
+		$('#grade').val('${gradeSelected}');
+	});
+</script>
 </head>
 <body>
 	<form method="post" action="home" id="formHome">
@@ -16,6 +22,11 @@
 		<div class="row">
 			<div class="col s12">
 				<h1>Liste des produits Nutriscore</h1>
+			</div>
+			<div class="col s12">
+				<c:forEach var="filtre" items="${filterResult}">
+					<div class="chip">${filtre}</div>
+				</c:forEach>
 			</div>
 			<div class="col s12">
 				<h5>Recherche Complexe</h5>
@@ -31,11 +42,13 @@
 				</select>
 			</div>
 			<div class="col s3 input-field">
-				<input id="searchPaysVente" name="searchPaysVente" type="text"> <label
+				<input id="searchPaysVente" value="${paysVenteSelected}"
+					name="searchPaysVente" type="text"> <label
 					for="searchPaysVente">Pays de Vente</label>
 			</div>
 			<div class="col s3 input-field">
-				<input id="searchPaysOrigine" name="searchPaysOrigine" type="text"> <label
+				<input id="searchPaysOrigine" value="${paysOrigineSelected}"
+					name="searchPaysOrigine" type="text"> <label
 					for="searchPaysOrigine">Pays d'Origine</label>
 			</div>
 			<div class="col s3 input-field">
@@ -108,7 +121,8 @@
 									href="#delete"><i class="material-icons">delete</i></a></td>
 								<td><a class="btn-floating waves-effect waves-light yellow"
 									onclick="$('#button').val('addfavoris');$('#nutriId').val('${element.getId()}');$('#formHome').submit();">
-									<i class="material-icons">star</i></a></td>
+										<i class="material-icons">star</i>
+								</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -122,7 +136,8 @@
 			</a>
 			<ul>
 				<li class="waves-effect waves-light tooltipped" data-position="top"
-					data-tooltip="Ajouter un produit"><a href="#addElement"><i class="material-icons">add_circle</i></a></li>
+					data-tooltip="Ajouter un produit"><a href="#addElement"><i
+						class="material-icons">add_circle</i></a></li>
 			</ul>
 		</div>
 		<%@include file="/JSP/modal/deleteProductAtHome.jsp"%>
