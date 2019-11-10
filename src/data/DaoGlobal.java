@@ -68,10 +68,10 @@ public class DaoGlobal {
 	static public LinkedList<Nutri> getAllByNutriscore(String nutriscore, String searchPaysVente,
 			String searchPaysOrigine) throws IOException {
 		LinkedList<Nutri> listNutri = new LinkedList<Nutri>();
-		if (nutriscore != null && nutriscore != "none") {
+		if (nutriscore != null && nutriscore != "none" && nutriscore != "") {
 
 		} else {
-			nutriscore = "";
+			nutriscore = "none";
 		}
 		if (searchPaysVente != null && !searchPaysVente.isEmpty()) {
 

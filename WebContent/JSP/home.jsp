@@ -52,9 +52,18 @@
 					for="searchPaysOrigine">Pays d'Origine</label>
 			</div>
 			<div class="col s3 input-field">
-				<a class="waves-effect waves-light btn  dark-purple "
-					onclick="$('#button').val('filter');$('#formHome').submit();"><i
-					class="material-icons right">search</i>Rechercher</a>
+				<div class="input-field col s9">
+					<a class="waves-effect waves-light btn  dark-purple "
+						onclick="$('#button').val('filter');$('#formHome').submit();"><i
+						class="material-icons right">search</i>Rechercher</a>
+				</div>
+				<div class="input-field col s3">
+					<a class="btn-floating waves-effect waves-light grey tooltipped"
+						data-position="top" data-tooltip="Réinitialiser les filtres"
+						onclick="$('#button').val('resetFilter');$('#formHome').submit();">
+						<i class="material-icons">delete_sweep</i>
+					</a>
+				</div>
 			</div>
 			<div class="col s12">
 				<hr class="grey-text text-lighten-2">
@@ -113,13 +122,19 @@
 								<td>${element.getPaysVente()}</td>
 								<td>${element.getPaysOrigine()}</td>
 								<td><a
-									class="tiny btn-floating waves-effect waves-light dark-purple"><i
+									class="tiny btn-floating waves-effect waves-light dark-purple tooltipped"
+									data-position="right"
+									data-tooltip="Consulter le produit"><i
 										class="tiny material-icons"
 										onclick="$('#button').val('oneElement');$('#nutriId').val('${element.getId()}');$('#formHome').submit();">search</i></a></td>
-								<td><a class="btn-floating waves-effect waves-light red"
+								<td><a class="btn-floating waves-effect waves-light red tooltipped"
+									data-position="top"
+									data-tooltip="Supprimer le produit"
 									onclick="$('#nutriId').val('${element.getId()}');$('#nameToDelete').empty();$('#nameToDelete').append('${element.getNomProduit()}');"
 									href="#delete"><i class="material-icons">delete</i></a></td>
-								<td><a class="btn-floating waves-effect waves-light yellow"
+								<td><a class="btn-floating waves-effect waves-light yellow tooltipped"
+									data-position="left"
+									data-tooltip="Ajouter aux favoris"
 									onclick="$('#button').val('addfavoris');$('#nutriId').val('${element.getId()}');$('#formHome').submit();">
 										<i class="material-icons">star</i>
 								</a></td>

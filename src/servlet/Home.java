@@ -37,12 +37,12 @@ public class Home extends HttpServlet {
 		HttpSession session = request.getSession();
 		if (session.getAttribute("action") != null) {
 			if (session.getAttribute("action").equals("filter")) {
-				request.setAttribute("result", session.getAttribute("result"));
+				session.setAttribute("result", session.getAttribute("result"));
 			} else {
-				request.setAttribute("result", DaoGlobal.getAllNutri());
+				session.setAttribute("result", DaoGlobal.getAllNutri());
 			}
 		} else {
-			request.setAttribute("result", DaoGlobal.getAllNutri());
+			session.setAttribute("result", DaoGlobal.getAllNutri());
 		}
 		Navigation.load(request, response, "home");
 	}
@@ -80,7 +80,7 @@ public class Home extends HttpServlet {
 			}
 			request.setAttribute("filterResult", filters);
 			request.setAttribute("gradeSelected", nutriscore);
-			request.setAttribute("paysOrigineSelected",  searchPaysOrigine);
+			request.setAttribute("paysOrigineSelected", searchPaysOrigine);
 			request.setAttribute("paysVenteSelected", searchPaysVente);
 			Navigation.load(request, response, "home");
 			break;
@@ -89,6 +89,10 @@ public class Home extends HttpServlet {
 			session.setAttribute("action", "delete");
 			Navigation.to(request, response, "home");
 			break;
+		case "resetFilter":
+			session.setAttribute("result", DaoGlobal.getAllByNutriscore("none", "none", "none"));
+			session.setAttribute("action", "filter");
+			Navigation.to(request, response, "home");
 		case "add":
 			String nom = request.getParameter("addName");
 			String grade = request.getParameter("addGrade");
